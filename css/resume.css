@@ -1,0 +1,292 @@
+/* ==========================================================================
+   LAYER 2: CHAMPION INFO / QUICK RESUME
+   Clean, Executive, Recruiter-Optimized Interface & Print Stylesheet
+   ========================================================================== */
+
+#champion-info-layer {
+  display: none;
+  min-height: 100vh;
+  padding: 100px 24px 80px;
+  background-color: #0b0e17;
+  color: #1e293b;
+}
+
+#champion-info-layer.active {
+  display: block;
+}
+
+/* Resume Paper Sheet Container */
+.resume-paper-container {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #ffffff;
+  color: #1e293b;
+  border-radius: var(--radius-md);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  padding: 56px 64px;
+  position: relative;
+  font-family: var(--font-sans);
+}
+
+/* Top Toolbar for Recruiters */
+.resume-toolbar {
+  max-width: 960px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.resume-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resume-mode-badge {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  background: rgba(16, 20, 34, 0.85);
+  border: 1px solid var(--gold-border);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+}
+
+.resume-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Resume Header Section */
+.resume-header {
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 24px;
+  margin-bottom: 30px;
+}
+
+.resume-name-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.resume-candidate-name {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #0f172a;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.resume-candidate-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+.resume-contacts-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 0.86rem;
+  color: #334155;
+}
+
+.resume-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+}
+
+.resume-contact-item a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+.resume-contact-item a:hover {
+  text-decoration: underline;
+}
+
+.resume-summary-box {
+  margin-top: 16px;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #334155;
+  background: #f8fafc;
+  padding: 14px 18px;
+  border-left: 3px solid #1e293b;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Resume Section Headers */
+.resume-section {
+  margin-bottom: 30px;
+}
+
+.resume-sec-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #0f172a;
+  text-transform: uppercase;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 6px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Experience & Project Items */
+.resume-entry {
+  margin-bottom: 22px;
+}
+.resume-entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+
+.entry-role-org {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.entry-role-org span {
+  font-weight: 500;
+  color: #475569;
+}
+
+.entry-date-location {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.entry-sub-desc {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.entry-bullet-list {
+  list-style: disc;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.entry-bullet-list li {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #334155;
+}
+
+/* Skills Grid in Resume */
+.resume-skills-block {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 0.88rem;
+}
+
+.skill-category-label {
+  font-weight: 700;
+  color: #0f172a;
+}
+.skill-category-items {
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   PRINT STYLESHEET (@media print)
+   ========================================================================== */
+@media print {
+  /* Hide all interactive Rift UI */
+  .top-hud,
+  .mobile-drawer,
+  #arcane-canvas,
+  .companion-widget,
+  .rift-footer,
+  .resume-toolbar,
+  #rift-experience-layer {
+    display: none !important;
+  }
+
+  /* Force display champion-info-layer cleanly */
+  #champion-info-layer {
+    display: block !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .resume-paper-container {
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    color: #000000 !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  .resume-candidate-name {
+    color: #000000 !important;
+  }
+
+  .resume-sec-title {
+    border-bottom: 1px solid #000000 !important;
+    color: #000000 !important;
+  }
+
+  .resume-entry {
+    page-break-inside: avoid;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-paper-container {
+    padding: 32px 20px;
+  }
+  .resume-skills-block {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

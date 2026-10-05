@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ha Minh Thuan — International Finance × Data × Risk × Product</title>
+  <meta name="description" content="Ha Minh Thuan — International Finance undergraduate at Foreign Trade University, Hanoi. Exploring how finance, data and technology become better decisions and better products.">
+  <meta name="theme-color" content="#010204">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23010204'/><circle cx='50' cy='50' r='32' fill='none' stroke='%23e2c99a' stroke-width='2'/><circle cx='50' cy='18' r='4' fill='%23e2c99a'/><text x='50' y='57' font-family='sans-serif' font-weight='300' font-size='22' fill='%23ffffff' text-anchor='middle'>MT</text></svg>">
+
+  <!-- Google Fonts: Cormorant Garamond, Inter, IBM Plex Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/space.css">
+  <link rel="stylesheet" href="css/cardy.css">
+  <noscript>
+    <style>
+      .space-intro { display: none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <!-- ========================================================================
+       CINEMATIC PROLOGUE: 20–30s DEEP SPACE JOURNEY (INTERSTELLAR SCALE)
+       ======================================================================== -->
+  <div id="space-intro" class="space-intro" role="region" aria-label="Cinematic Prologue">
+    <canvas id="intro-canvas" class="intro-canvas" aria-hidden="true"></canvas>
+    
+    <!-- Gravitational accretion core -->
+    <div id="intro-accretion-core" class="intro-accretion-core" aria-hidden="true"></div>
+    <div class="intro-vignette" aria-hidden="true"></div>
+
+    <!-- Intro Narrative Stages -->
+    <div class="intro-stages-container">
+      <!-- Phase 01: Deep Space Coordinates -->
+      <div id="intro-stage-void" class="intro-stage-item">
+        <span class="intro-telemetry-ping">DEEP SPACE CO-ORDINATES · SCANNING VOID</span>
+      </div>
+
+      <!-- Phase 04: Gravitational Structure (Orbital Geometry) -->
+      <div id="intro-stage-gravity" class="intro-stage-item intro-stage-gravity">
+        <div class="gravity-ring-orbit gravity-ring-1"></div>
+        <div class="gravity-ring-orbit gravity-ring-2"></div>
+        <div class="gravity-ring-orbit gravity-ring-3"></div>
+      </div>
+
+      <!-- Phase 05: Monolith Name Reveal -->
+      <div id="intro-stage-name" class="intro-stage-item">
+        <div class="intro-pre-telemetry">TRANSIT DETECTED · SINGULARITY</div>
+        <h1 class="intro-name-title">HA MINH THUAN</h1>
+      </div>
+
+      <!-- Phase 06: Identity / Academic Positioning -->
+      <div id="intro-stage-discipline" class="intro-stage-item">
+        <div class="intro-discipline-primary">INTERNATIONAL FINANCE</div>
+        <div class="intro-discipline-sub">DATA &nbsp;/&nbsp; RISK &nbsp;/&nbsp; PRODUCT &nbsp;/&nbsp; FINTECH</div>
+      </div>
+
+      <!-- Phase 07: The System Climax -->
+      <div id="intro-stage-system" class="intro-stage-item">
+        <div class="intro-system-tag">INTERCONNECTED FORCES</div>
+        <div class="intro-system-formula">
+          <span class="intro-force-node">FINANCE</span>
+          <span class="intro-force-cross">×</span>
+          <span class="intro-force-node">DATA</span>
+          <span class="intro-force-cross">×</span>
+          <span class="intro-force-node">RISK</span>
+          <span class="intro-force-cross">×</span>
+          <span class="intro-force-node">PRODUCT</span>
+        </div>
+        <div class="intro-system-subtext">“Exploring how finance, data and technology become better decisions — and better products.”</div>
+      </div>
+    </div>
+
+    <!-- Intro HUD Controls: Skip & Audio -->
+    <div class="intro-controls-hud">
+      <button id="intro-audio-toggle" class="intro-ctrl-btn" type="button" aria-label="Toggle ambient atmospheric audio">
+        <span class="audio-icon-pulse"></span>
+        <span id="audio-label">Ambient Audio: Off</span>
+      </button>
+      <button id="intro-skip-btn" class="intro-ctrl-btn intro-skip-btn" type="button" aria-label="Skip cinematic prologue">
+        <span>Skip Sequence</span>
+        <span class="intro-skip-symbol">⇥</span>
+      </button>
+    </div>
+
+    <!-- Intro Progress Bar (20-30s timeline indication) -->
+    <div class="intro-progress-bar" aria-hidden="true">
+      <div id="intro-progress-fill" class="intro-progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- Fullscreen 3D Starfield & Optical Lens Overlays -->
+  <canvas id="space-canvas" aria-hidden="true"></canvas>
+  <div class="lens-vignette" aria-hidden="true"></div>
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="celestial-horizon-streak" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       OBSERVATORY NAVIGATION
+       ======================================================================== -->
+  <header id="space-nav" class="space-nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand" aria-label="Ha Minh Thuan — Return to Hero">
+        <span class="brand-monogram">HMT</span>
+        <span class="brand-sector">Systems &amp; Finance</span>
+      </a>
+
+      <!-- Primary Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#background" class="nav-link">Background</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right-cluster">
+        <button id="nav-replay-intro" class="replay-intro-btn" type="button" aria-label="Replay cinematic prologue">Prologue ↺</button>
+        <a href="assets/Ha_Minh_Thuan_Resume.pdf" target="_blank" rel="noopener noreferrer" class="cv-pill-link">CV (PDF) ↗</a>
+        <button id="nav-toggle-mobile" class="mobile-nav-trigger" type="button" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay Menu -->
+  <div id="mobile-space-menu" class="mobile-space-menu" aria-hidden="true">
+    <button id="mobile-menu-close" class="mobile-menu-close-btn" type="button" aria-label="Close Navigation Menu">✕</button>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#work">Work</a>
+    <a href="#background">Background</a>
+    <a href="#contact">Contact</a>
+    <a href="assets/Ha_Minh_Thuan_Resume.pdf" target="_blank" rel="noopener noreferrer" style="font-size: 1.25rem; color: var(--star-amber);">View CV (PDF) ↗</a>
+  </div>
+
+  <main class="universe-stream">
+
+    <!-- ======================================================================
+         SECTOR 00 — HERO: THE GRAVITATIONAL OPENING
+         ====================================================================== -->
+    <section id="hero" class="hero-cosmos">
+      <div class="hero-backdrop-layer">
+        <img src="assets/images/space/horizon.jpg" alt="Vast gravitational horizon in deep space" class="hero-blackhole-img">
+        <div class="hero-veil-gradient"></div>
+      </div>
+
+      <div class="container-cinematic">
+        <div class="hero-stage-content">
+          <div class="beacon-pill">
+            <span class="beacon-pulse"></span>
+            <span class="beacon-label">Hanoi, Vietnam &nbsp;·&nbsp; FTU International Finance</span>
+          </div>
+
+          <h1 class="hero-monolith-name">Ha Minh Thuan</h1>
+          <div class="hero-discipline-signal">International Finance</div>
+
+          <div class="hero-connected-axis">
+            <span class="axis-node">Finance</span>
+            <span class="axis-symbol">×</span>
+            <span class="axis-node">Data</span>
+            <span class="axis-symbol">×</span>
+            <span class="axis-node">Risk</span>
+            <span class="axis-symbol">×</span>
+            <span class="axis-node">Product</span>
+          </div>
+
+          <p class="hero-philosophy-quote">
+            “Exploring how finance, data and technology become better decisions — and better products.”
+          </p>
+
+          <div class="hero-cinematic-actions">
+            <a href="#about" class="btn-space-drift">Enter The Expanse ↓</a>
+            <a href="assets/Ha_Minh_Thuan_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-space-subtle">View Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTOR 01 — ABOUT: SYSTEM IDENTITY
+         ====================================================================== -->
+    <section id="about" class="spatial-sector">
+      <div class="sector-watermark">01 / Foundation</div>
+      <div class="container-cinematic">
+        <div class="telemetry-header">Sector 01 · Origin &amp; Focus</div>
+        <h2 class="monumental-heading">Connecting the <em>underlying forces.</em></h2>
+
+        <div class="about-split-horizon">
+          <div class="about-narrative-stream">
+            <p>
+              I am an <strong>International Finance</strong> undergraduate at Foreign Trade University in Hanoi. My background started with the foundational mechanics of global financial systems: international capital markets, cross-border flows, and balance-sheet structures.
+            </p>
+            <p>
+              Moving through institutional banking operations at <strong>VPBank</strong> and retail banking systems at <strong>MB Bank</strong> revealed how financial workflows actually function under operational risk controls. Parallel research in fintech and business development at <strong>U2U</strong> shifted my perspective toward how financial services are structured, priced, and delivered.
+            </p>
+            <p>
+              Working with multi-million-record credit datasets deepened my interest in data engineering, variable transformations, and empirical risk evaluation. By connecting financial reasoning with data analysis and product logic, I explore problems where quantitative rigor turns into clear, practical outcomes.
+            </p>
+          </div>
+
+          <!-- Spec Monolith Block -->
+          <div class="about-spec-monolith">
+            <div class="spec-head-label">System Telemetry</div>
+            <div class="spec-entry">
+              <span class="spec-k">Base Coordinates</span>
+              <span class="spec-v">Hanoi, Vietnam</span>
+            </div>
+            <div class="spec-entry">
+              <span class="spec-k">Academic Institution</span>
+              <span class="spec-v">Foreign Trade University (FTU)</span>
+            </div>
+            <div class="spec-entry">
+              <span class="spec-k">Field of Study</span>
+              <span class="spec-v">Bachelor's — International Finance</span>
+            </div>
+            <div class="spec-entry">
+              <span class="spec-k">Expected Completion</span>
+              <span class="spec-v">April 2027</span>
+            </div>
+            <div class="spec-entry">
+              <span class="spec-k">Languages</span>
+              <span class="spec-v">Vietnamese (Native) · English (Fluent, IELTS 8.0) · Chinese (Elementary)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTOR 02 — EXPERIENCE: THE ORBITAL TRAJECTORY
+         ====================================================================== -->
+    <section id="experience" class="spatial-sector">
+      <div class="sector-watermark">02 / Trajectory</div>
+      <div class="container-cinematic">
+        <div class="telemetry-header">Sector 02 · Trajectory</div>
+        <h2 class="monumental-heading">Institutional &amp; <em>operational stations.</em></h2>
+
+        <!-- The Glowing Orbital Spine with 4 Stations -->
+        <div class="trajectory-track">
+          <div class="trajectory-spine" aria-hidden="true"></div>
+
+          <!-- Station 1: VPBank -->
+          <article class="trajectory-station">
+            <div class="station-node-marker">
+              <div class="node-orbit-ring">
+                <span class="node-core-dot"></span>
+              </div>
+            </div>
+            <div class="station-monolith">
+              <div class="station-top-meta">
+                <h3 class="station-org-name">VPBank</h3>
+                <span class="station-time-coord">Jul 2026 — Sep 2026 · Hanoi, Vietnam</span>
+              </div>
+              <div class="station-role-label">Financial Market / Wholesale Banking Operations Intern</div>
+              <p class="station-summary-p">
+                Operational back-office support across wholesale banking activities within Treasury and Trade Finance, operating under strict operational controls and verification standards.
+              </p>
+              <ul class="station-evidence-list">
+                <li>Supported Treasury and Financial Market operations covering corporate deposits, large-corporate deposits, and Certificates of Deposit (CDs), including transaction input and document processing.</li>
+                <li>Handled Trade Finance workflows for import/export Letters of Credit (L/Cs), collections, and international guarantees.</li>
+                <li>Managed document routing, ECM uploads, physical archiving, and transaction validation with constant awareness of operational risk.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Station 2: MB Bank -->
+          <article class="trajectory-station">
+            <div class="station-node-marker">
+              <div class="node-orbit-ring">
+                <span class="node-core-dot"></span>
+              </div>
+            </div>
+            <div class="station-monolith">
+              <div class="station-top-meta">
+                <h3 class="station-org-name">MB Bank</h3>
+                <span class="station-time-coord">May 2026 — Aug 2026 · Vietnam</span>
+              </div>
+              <div class="station-role-label">Universal Banker Intern</div>
+              <p class="station-summary-p">
+                Retail branch banking exposure bridging direct customer interaction with core banking systems and digital adoption.
+              </p>
+              <ul class="station-evidence-list">
+                <li>Assisted branch customer service operations, addressing retail inquiries and supporting deposit product adoption through approximately 20–30 customer calls per day.</li>
+                <li>Executed BPM banking system input and processed remittance-related transaction entries.</li>
+                <li>Guided retail customers through digital banking workflows, including the MB App and VietQR payment infrastructure.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Station 3: U2U -->
+          <article class="trajectory-station">
+            <div class="station-node-marker">
+              <div class="node-orbit-ring">
+                <span class="node-core-dot"></span>
+              </div>
+            </div>
+            <div class="station-monolith">
+              <div class="station-top-meta">
+                <h3 class="station-org-name">U2U</h3>
+                <span class="station-time-coord">Nov 2024 — Apr 2025</span>
+              </div>
+              <div class="station-role-label">Business Development Intern / Associate</div>
+              <p class="station-summary-p">
+                Fintech product research, competitive benchmarking, and structured partner development within a high-growth technology environment.
+              </p>
+              <ul class="station-evidence-list">
+                <li>Conducted research across 20+ fintech products, analyzing fee structures, competitor positioning, and underlying business models.</li>
+                <li>Built and maintained a prospective partner database of 50+ ecosystem entities to support partnership development.</li>
+                <li>Supported the onboarding process for 3 media partners, translating structured market insights into business development results.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Station 4: TEC FTU -->
+          <article class="trajectory-station">
+            <div class="station-node-marker">
+              <div class="node-orbit-ring">
+                <span class="node-core-dot"></span>
+              </div>
+            </div>
+            <div class="station-monolith">
+              <div class="station-top-meta">
+                <h3 class="station-org-name">TEC FTU</h3>
+                <span class="station-time-coord">Nov 2024 — Nov 2025</span>
+              </div>
+              <div class="station-role-label">Product &amp; Communications Lead</div>
+              <p class="station-summary-p">
+                Leadership, program execution, and ecosystem coordination within a prominent student-led technology and fintech organization.
+              </p>
+              <ul class="station-evidence-list">
+                <li>Led a 15-member core team and coordinated a broader 30-member cross-functional initiative across program design, communications, and operations.</li>
+                <li>Drove participation of 300+ competitors and engaged ~1,000 offline attendees across workshops and community initiatives.</li>
+                <li>Coordinated partnerships with 50+ ecosystem organizations, including Dragon Capital and Sui Foundation.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTOR 03 — SELECTED WORK: THREE MONUMENTAL SYSTEMS
+         ====================================================================== -->
+    <section id="work" class="spatial-sector">
+      <div class="sector-watermark">03 / Forged Systems</div>
+      <div class="container-cinematic">
+        <div class="telemetry-header">Sector 03 · Selected Work</div>
+        <h2 class="monumental-heading">Systems built &amp; <em>interrogated.</em></h2>
+
+        <div class="monumental-work-gallery">
+          <!-- 01 — CARDY -->
+          <article class="celestial-project-monolith" id="cardy">
+            <div class="project-telemetry-tag">
+              <span class="project-id-coord">Object 01</span>
+              <span class="project-domain-coord">Fintech / Product Architecture</span>
+            </div>
+
+            <h3 class="project-monumental-name">Cardy</h3>
+            <div class="project-sub-slogan">“Thanh toán card đi? Để Cardy!”</div>
+
+            <p style="font-size: 1.1rem; line-height: 1.85; color: var(--starlight-dim); max-width: 860px; font-weight: 300;">
+              Vietnam's credit-card market is fragmented across dozens of commercial banks, each with differing cashback tiers, point multipliers, and merchant partnerships. Consumers frequently leave significant rewards unclaimed simply because matching spending behavior with card rules is non-transparent. Cardy is a recommendation platform that starts from the user's spending goals and determines the optimal card.
+            </p>
+
+            <!-- 4-Step Structural Trajectory -->
+            <div class="four-step-trajectory">
+              <div class="trajectory-step-item">
+                <span class="step-label-tiny">01 · Financial Knowledge</span>
+                <span class="step-text-val">Bank reward mechanics &amp; merchant fee tiers</span>
+              </div>
+              <div class="trajectory-step-item">
+                <span class="step-label-tiny">02 · User Problem</span>
+                <span class="step-text-val">Suboptimal card choices &amp; fragmented rewards</span>
+              </div>
+              <div class="trajectory-step-item">
+                <span class="step-label-tiny">03 · Product Logic</span>
+                <span class="step-text-val">Goal-based category mapping &amp; alternative ranking</span>
+              </div>
+              <div class="trajectory-step-item">
+                <span class="step-label-tiny">04 · Technology</span>
+                <span class="step-text-val">FastAPI backend + PostgreSQL relational schema</span>
+              </div>
+            </div>
+
+            <!-- Cardy Interactive Split Showcase -->
+            <div class="cardy-cinematic-stage">
+              <!-- 3D Card Artifact -->
+              <div class="card-stage-container">
+                <div id="cardy-card-element" class="cardy-3d-wrapper" role="button" tabindex="0" aria-label="Inspect Cardy Architecture Notes">
+                  <div class="cardy-card-face">
+                    <div class="cardy-circuit-bg"></div>
+                    <div id="cardy-glare-element" class="cardy-foil-glare"></div>
+
+                    <div class="cardy-top-row">
+                      <div class="cardy-brand-logo">
+                        <div class="cardy-gem-icon"></div>
+                        <span class="cardy-brand-text">Cardy</span>
+                      </div>
+                      <svg class="cardy-contactless-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.5 7.5a6 6 0 0 1 0 9"/><path d="M12 5a10 10 0 0 1 0 14"/><path d="M15.5 3a13 13 0 0 1 0 18"/></svg>
+                    </div>
+
+                    <div class="cardy-mid-row">
+                      <div class="cardy-emv-chip"></div>
+                      <div class="cardy-slogan-pill">“Thanh toán card đi? Để Cardy!”</div>
+                    </div>
+
+                    <div class="cardy-bottom-row">
+                      <div class="cardy-holder-info">
+                        <div class="holder-label">CARDHOLDER / ARCHITECT</div>
+                        <div class="holder-name">HA MINH THUAN</div>
+                      </div>
+                      <div class="cardy-network-emblem">FINTECH</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-hover-hint">Move cursor to tilt &nbsp;·&nbsp; Click to view architecture notes</div>
+              </div>
+
+              <!-- Recommendation Simulator -->
+              <div class="cardy-sim-box">
+                <div style="font-family: var(--font-telemetry); font-size: 0.72rem; letter-spacing: 0.22em; color: var(--star-amber); text-transform: uppercase; margin-bottom: 14px;">
+                  Test Prototype Flow — Select Goal
+                </div>
+
+                <div class="sim-goal-pills">
+                  <button class="goal-pill-btn active" data-goal="cashback" type="button">Cashback</button>
+                  <button class="goal-pill-btn" data-goal="travel" type="button">Travel &amp; Miles</button>
+                  <button class="goal-pill-btn" data-goal="dining" type="button">Dining</button>
+                  <button class="goal-pill-btn" data-goal="shopping" type="button">Online Shopping</button>
+                </div>
+
+                <div class="sim-results-card" aria-live="polite">
+                  <div class="result-top-pick">
+                    <div class="pick-title-wrap">
+                      <span class="pick-badge">Optimal Recommendation</span>
+                      <span id="sim-rec-name" class="pick-card-name">VPBank Step Up</span>
+                    </div>
+                    <div class="pick-reward-rate">
+                      <div id="sim-rec-rate-val" class="rate-val">15%</div>
+                      <div id="sim-rec-rate-lbl" class="rate-desc">Max Cashback on E-Commerce</div>
+                    </div>
+                  </div>
+
+                  <p id="sim-rec-desc" class="result-details-text">
+                    Optimized for digital spenders. Maximizes cashback on online shopping, ride-hailing and digital subscriptions with capped tier bonuses.
+                  </p>
+
+                  <div id="sim-rec-merchants" class="result-merchants-row">
+                    <span class="merchant-tag">Shopee</span>
+                    <span class="merchant-tag">Grab</span>
+                    <span class="merchant-tag">Tiki</span>
+                    <span class="merchant-tag">Lazada</span>
+                  </div>
+
+                  <div id="sim-rec-alts" class="sim-alts">
+                    Ranked Alternatives: Techcombank Spark · VIB Cash Back
+                  </div>
+                </div>
+
+                <p class="project-disclaimer-telemetry">
+                  FastAPI &amp; PostgreSQL interactive prototype. Deterministic rule-based ranking (no AI claims).
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02 — CREDIT RISK MODEL STABILITY -->
+          <article class="celestial-project-monolith" id="credit-risk">
+            <div class="project-telemetry-tag">
+              <span class="project-id-coord">Object 02</span>
+              <span class="project-domain-coord">Credit Risk Analytics &amp; Feature Pipelines</span>
+            </div>
+
+            <h3 class="project-monumental-name">Credit Risk Model Stability</h3>
+            <div class="project-sub-slogan">Predictive signal retention across 20 million records</div>
+
+            <p style="font-size: 1.1rem; line-height: 1.85; color: var(--starlight-dim); max-width: 860px; font-weight: 300;">
+              Analysis based on the Home Credit public competition dataset. The objective was to structure massive raw credit files, design feature transformations, and evaluate how predictive variables maintain stability across temporal shifts.
+            </p>
+
+            <div class="four-step-trajectory">
+              <div class="trajectory-step-item">
+                <span class="step-label-tiny">01 · Scale</span>
+                <span class="step-text-val">Large-scale credit data (~20M raw records)</span>
+              </div>
+              <div class="trajectory-step-item">
+                <span class="step-label-tiny">02 · Engineering</span>
+                <span class="step-text-val">EDA, schema validation &amp; PostgreSQL loading</span>
+              </div>
+              <div class="trajectory-step-item">
+                <span class="step-label-tiny">03 · Transformation</span>
+                <span class="step-text-val">WoE / IV, binning &amp; variable interactions</span>
+              </div>
+              <div class="trajectory-step-item">
+                <span class="step-label-tiny">04 · Evaluation</span>
+                <span class="step-text-val">Feature selection assessed via Gini, AUC &amp; F1</span>
+              </div>
+            </div>
+
+            <div class="spatial-metrics-array">
+              <div class="spatial-metric-point">
+                <span class="spatial-metric-label">Raw Dataset</span>
+                <span class="spatial-metric-value">~20M Records</span>
+              </div>
+              <div class="spatial-metric-point">
+                <span class="spatial-metric-label">Working Sample</span>
+                <span class="spatial-metric-value">~2M Records</span>
+              </div>
+              <div class="spatial-metric-point">
+                <span class="spatial-metric-label">Stack</span>
+                <span class="spatial-metric-value">Python · SQL</span>
+              </div>
+              <div class="spatial-metric-point">
+                <span class="spatial-metric-label">Models Evaluated</span>
+                <span class="spatial-metric-value">LogReg · XGB · LGBM</span>
+              </div>
+            </div>
+
+            <p class="project-disclaimer-telemetry">
+              Personal/public-dataset exploration. Focused on feature engineering and variable ranking — not a deployed production model.
+            </p>
+          </article>
+
+          <!-- 03 — READING VIETNAMESE BANKS -->
+          <article class="celestial-project-monolith" id="banking-analysis">
+            <div class="project-telemetry-tag">
+              <span class="project-id-coord">Object 03</span>
+              <span class="project-domain-coord">Comparative Financial Statement Analysis</span>
+            </div>
+
+            <h3 class="project-monumental-name">Reading Vietnamese Banks</h3>
+            <div class="project-sub-slogan">27 listed commercial banks × 5 years × 4 core ratios</div>
+
+            <p style="font-size: 1.1rem; line-height: 1.85; color: var(--starlight-dim); max-width: 860px; font-weight: 300;">
+              A comparative study analyzing the published financial statements of 27 listed Vietnamese commercial banks over the 2020–2024 economic cycle. The study maps differences in balance-sheet scale, liquidity buffers, and asset quality.
+            </p>
+
+            <div class="spatial-metrics-array">
+              <div class="spatial-metric-point">
+                <span class="spatial-metric-label">Asset Quality</span>
+                <span class="spatial-metric-value">NPL Ratio</span>
+              </div>
+              <div class="spatial-metric-point">
+                <span class="spatial-metric-label">Provision Cushion</span>
+                <span class="spatial-metric-value">LLCR Ratio</span>
+              </div>
+              <div class="spatial-metric-point">
+                <span class="spatial-metric-label">Liquidity Structure</span>
+                <span class="spatial-metric-value">LDR Ratio</span>
+              </div>
+              <div class="spatial-metric-point">
+                <span class="spatial-metric-label">Funding Cost</span>
+                <span class="spatial-metric-value">CASA Ratio</span>
+              </div>
+            </div>
+
+            <p class="project-disclaimer-telemetry">
+              Built using Excel and published audited financial statements (2020–2024). Demonstrates financial statement interpretation and structured sector benchmarking.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTOR 04 — BACKGROUND: ACADEMIC CALM & TOOLKIT
+         ====================================================================== -->
+    <section id="background" class="spatial-sector">
+      <div class="sector-watermark">04 / Grounding</div>
+      <div class="container-cinematic">
+        <div class="telemetry-header">Sector 04 · Background</div>
+        <h2 class="monumental-heading">Academic grounding &amp; <em>toolkit.</em></h2>
+
+        <div class="background-celestial-split">
+          <!-- Left: Education & Coursework -->
+          <div class="bg-monolith-card">
+            <div class="telemetry-header" style="margin-bottom: 18px;">Academic Profile</div>
+            <h3 class="edu-monument-title">Foreign Trade University</h3>
+            <div class="edu-degree-details">Bachelor's Degree in International Finance &nbsp;·&nbsp; 2023–2027</div>
+            <span class="edu-performance-pill">Academic Performance — Excellent</span>
+
+            <div style="font-family: var(--font-telemetry); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--starlight-faint); margin-bottom: 14px;">
+              Curricular Focus:
+            </div>
+
+            <!-- Coursework Highlights in Stellar Rim Light -->
+            <div class="coursework-highlights-column">
+              <div class="course-item-celestial">
+                <span class="course-celestial-pip"></span>
+                <span class="course-celestial-name">Applied Technology in Finance &amp; Banking</span>
+              </div>
+              <div class="course-item-celestial">
+                <span class="course-celestial-pip"></span>
+                <span class="course-celestial-name">Fintech</span>
+              </div>
+              <div class="course-item-celestial">
+                <span class="course-celestial-pip"></span>
+                <span class="course-celestial-name">International Financial Management</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 36px;">
+              <div class="telemetry-header" style="margin-bottom: 18px;">Key Distinctions</div>
+              <div class="compact-distinctions-stream">
+                <div class="distinction-row">
+                  <span class="distinction-name">Deloitte Tax Challenge 2027</span>
+                  <span class="distinction-tag">Top 16 Nationally</span>
+                </div>
+                <div class="distinction-row">
+                  <span class="distinction-name">Credit Risk Modeling in Python</span>
+                  <span class="distinction-tag">DataCamp Certification</span>
+                </div>
+                <div class="distinction-row">
+                  <span class="distinction-name">Corporate Tax Job Simulation</span>
+                  <span class="distinction-tag">Forage Simulation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Skills Array -->
+          <div class="bg-monolith-card">
+            <div class="telemetry-header" style="margin-bottom: 18px;">Core Competencies</div>
+
+            <div class="skills-quadrant-array">
+              <div class="skill-sector-cell">
+                <div class="skill-sector-title">Finance</div>
+                <div class="skill-tokens-stream">
+                  International Finance<br>
+                  Financial Analysis<br>
+                  Banking Analysis<br>
+                  Financial Markets<br>
+                  Trade Finance<br>
+                  Risk Analytics
+                </div>
+              </div>
+
+              <div class="skill-sector-cell">
+                <div class="skill-sector-title">Data</div>
+                <div class="skill-tokens-stream">
+                  Python (pandas, Polars)<br>
+                  SQL<br>
+                  PostgreSQL<br>
+                  Excel<br>
+                  Power BI
+                </div>
+              </div>
+
+              <div class="skill-sector-cell">
+                <div class="skill-sector-title">Analytics</div>
+                <div class="skill-tokens-stream">
+                  EDA<br>
+                  Feature Engineering<br>
+                  WoE / IV<br>
+                  Binning<br>
+                  Variable Selection<br>
+                  Model Evaluation
+                </div>
+              </div>
+
+              <div class="skill-sector-cell">
+                <div class="skill-sector-title">Product</div>
+                <div class="skill-tokens-stream">
+                  Fintech Research<br>
+                  Product Research<br>
+                  Product Development<br>
+                  Cardy Prototype
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTOR 05 — CONTACT: THE TERMINAL HORIZON (SILENCE)
+         ====================================================================== -->
+    <section id="contact" class="spatial-sector">
+      <div class="sector-watermark">05 / Terminal</div>
+      <div class="container-cinematic">
+        <div class="contact-terminal-stage">
+          <div class="telemetry-header" style="justify-content: center;">Sector 05 · Transmission Horizon</div>
+          <h2 class="monumental-heading" style="margin-bottom: 12px;">Let's connect.</h2>
+
+          <button id="contact-email-btn" class="contact-direct-transmission" type="button" data-email="minhthuanha.work@gmail.com" aria-label="Copy transmission email address">
+            minhthuanha.work@gmail.com
+            <span id="transmission-cue" class="transmission-cue">Click to copy transmission address</span>
+          </button>
+
+          <div class="contact-coordinates-array">
+            <a href="mailto:minhthuanha.work@gmail.com" class="coordinate-link">Email ↗</a>
+            <a href="https://www.linkedin.com/in/minhthuan-ha/" target="_blank" rel="noopener noreferrer" class="coordinate-link">LinkedIn ↗</a>
+            <a href="assets/Ha_Minh_Thuan_Resume.pdf" target="_blank" rel="noopener noreferrer" class="coordinate-link">Resume (PDF) ↗</a>
+            <span class="coordinate-link" style="color: var(--starlight-faint); cursor: default;">Hanoi, Vietnam · GMT+7</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Deep Space Footer -->
+  <footer class="deep-space-footer">
+    <div class="container-cinematic">
+      <div class="footer-telemetry-stamp">
+        Ha Minh Thuan © 2026 &nbsp;·&nbsp; International Finance × Data × Risk × Product
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Cardy Architecture Notes -->
+  <div id="modal-cardy-details" class="modal-space" role="dialog" aria-modal="true" aria-labelledby="modal-cardy-title">
+    <div class="modal-space-window">
+      <button class="modal-close-btn" type="button" onclick="closeModal('modal-cardy-details')" aria-label="Close dialog">✕</button>
+      <div class="modal-eyebrow">Product Notes · Cardy</div>
+      <h3 id="modal-cardy-title" class="modal-title">Cardy Architecture &amp; Logic Flow</h3>
+
+      <p class="modal-desc">
+        Cardy bridges user financial objectives with the card reward landscape in Vietnam. The recommendation engine evaluates user goals against merchant category benefits to determine optimal choices with transparent alternatives.
+      </p>
+
+      <div class="modal-specs-grid">
+        <div class="modal-spec-cell">
+          <div class="modal-spec-k">Backend Architecture</div>
+          <div class="modal-spec-v">FastAPI microservices executing deterministic ranking queries.</div>
+        </div>
+        <div class="modal-spec-cell">
+          <div class="modal-spec-k">Database Modeling</div>
+          <div class="modal-spec-v">PostgreSQL relational schema capturing cards, merchant relations, and benefit tiers.</div>
+        </div>
+        <div class="modal-spec-cell">
+          <div class="modal-spec-k">Ecosystem Coverage</div>
+          <div class="modal-spec-v">Vietcombank, BIDV, MB Bank, VPBank, Techcombank, VietinBank.</div>
+        </div>
+        <div class="modal-spec-cell">
+          <div class="modal-spec-k">Status</div>
+          <div class="modal-spec-v">Interactive frontend prototype. Rule-based ranking with zero artificial claims.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/cardy.js"></script>
+  <script src="js/space.js"></script>
+</body>
+</html>

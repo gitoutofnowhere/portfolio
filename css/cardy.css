@@ -1,0 +1,217 @@
+/* ==========================================================================
+   CARDY — credit-card mockup & prototype flow
+   Brand: Cardy — "Thanh toán card đi? Để Cardy!"
+   Restyled for the cinematic palette; card structure preserved.
+   ========================================================================== */
+
+/* 3D perspective card stage */
+.card-stage-container {
+  position: relative;
+  perspective: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.cardy-3d-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1.586 / 1;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  cursor: pointer;
+  border-radius: 18px;
+  animation: cardFloat 9s ease-in-out infinite alternate;
+  outline: none;
+}
+
+@keyframes cardFloat {
+  0% { transform: translateY(0) rotateX(5deg) rotateY(-7deg); }
+  100% { transform: translateY(-10px) rotateX(-2deg) rotateY(5deg); }
+}
+
+.cardy-3d-wrapper:hover,
+.cardy-3d-wrapper:focus-visible { animation-play-state: paused; }
+
+.cardy-card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 7% 7.5%;
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgba(203, 182, 140, 0.16) 0%, transparent 45%),
+    linear-gradient(135deg, #1a1420 0%, #0d0b11 45%, #1b1524 75%, #241b2e 100%);
+  border: 1px solid rgba(203, 182, 140, 0.4);
+  box-shadow:
+    0 40px 80px -20px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(111, 93, 140, 0.18),
+    inset 0 1px 0 rgba(236, 229, 216, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Fine engraved texture */
+.cardy-circuit-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(236, 229, 216, 0.025) 0 1px, transparent 1px 7px),
+    radial-gradient(circle at 20% 85%, rgba(111, 93, 140, 0.22) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+/* Foil light that follows the cursor */
+.cardy-foil-glare {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 35%,
+    rgba(236, 224, 200, 0.16) 50%,
+    rgba(154, 139, 181, 0.12) 55%,
+    transparent 68%);
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: transform 0.15s ease;
+}
+
+.cardy-top-row,
+.cardy-mid-row,
+.cardy-bottom-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+.cardy-top-row { justify-content: space-between; }
+.cardy-mid-row { gap: 16px; }
+.cardy-bottom-row { justify-content: space-between; align-items: flex-end; }
+
+.cardy-brand-logo { display: flex; align-items: center; gap: 10px; }
+.cardy-gem-icon {
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  border: 1px solid #cbb68c;
+  background: linear-gradient(135deg, rgba(203, 182, 140, 0.6), transparent);
+}
+.cardy-brand-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #ece5d8;
+}
+.cardy-contactless-icon { color: #cbb68c; opacity: 0.8; }
+
+.cardy-emv-chip {
+  width: 46px;
+  height: 34px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #d8c597 0%, #9c8657 50%, #c9b385 100%);
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  position: relative;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.35);
+}
+.cardy-emv-chip::before,
+.cardy-emv-chip::after {
+  content: '';
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+}
+.cardy-emv-chip::before { top: 50%; left: 0; right: 0; height: 1px; }
+.cardy-emv-chip::after { left: 50%; top: 20%; bottom: 20%; width: 1px; }
+
+.cardy-slogan-pill {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: rgba(236, 229, 216, 0.75);
+}
+
+.cardy-holder-info .holder-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.26em;
+  color: rgba(203, 182, 140, 0.7);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.cardy-holder-info .holder-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: #ece5d8;
+}
+.cardy-network-emblem {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  color: #cbb68c;
+}
+
+.card-hover-hint {
+  margin-top: 2.2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #7d7986;
+}
+
+/* Prototype flow */
+.sim-goal-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.6rem; }
+.goal-pill-btn {
+  border: 1px solid rgba(236, 229, 216, 0.16);
+  padding: 0.55rem 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #b7b3bf;
+  transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.goal-pill-btn:hover { border-color: rgba(203, 182, 140, 0.6); color: #ece5d8; }
+.goal-pill-btn.active { background: #ece5d8; border-color: #ece5d8; color: #07060a; }
+
+.sim-results-card { display: flex; flex-direction: column; gap: 1rem; transition: opacity 0.4s; }
+.sim-results-card.updating { opacity: 0.3; }
+.result-top-pick {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(236, 229, 216, 0.12);
+}
+.pick-title-wrap { display: flex; flex-direction: column; }
+.pick-badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(203, 182, 140, 0.7);
+  margin-bottom: 4px;
+}
+.pick-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: #ece5d8; line-height: 1.1; }
+.pick-reward-rate { text-align: right; }
+.rate-val { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; line-height: 1; color: #cbb68c; }
+.rate-desc { font-size: 0.68rem; color: #7d7986; }
+.result-details-text { font-size: 0.9rem; color: #b7b3bf; }
+.result-merchants-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.merchant-tag {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid rgba(236, 229, 216, 0.12);
+  color: #b7b3bf;
+}
+.sim-alts { font-size: 0.78rem; color: rgba(203, 182, 140, 0.8); }
